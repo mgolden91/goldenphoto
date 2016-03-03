@@ -1,0 +1,13 @@
+<h1 class="ui center aligned header">Users<br />
+<div class="ui grid">
+  <div class="five column row">
+    <% @users.each do |users| %>
+      <div class="column">
+        <h3><%=users.username %></h3><br />
+        <h3><%=users.email %></h3><br />
+        <h3><%=users.role %></h3><br />
+        <%= link_to "Edit User", edit_user_path(users) %>
+      </div>
+    <% end %>
+  </div>
+</div>

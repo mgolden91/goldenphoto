@@ -4,7 +4,7 @@
     <h1><%= @image.title %></h1>
     <h3><%= @image.body %></h3>
     <h3><%= link_to "Make Comment", new_image_comment_path(@image) %></h3>
-    <h3>Uploaded By: <%= User.find(@image.user_id).username %> on <%= @image.created_at %></h3>
+    <h3>Uploaded By: <%= User.find(@image.user_id).username %> on <%= @image.created_at.strftime("%m/%d/%Y") %></h3>
   </div>
 </div>
 

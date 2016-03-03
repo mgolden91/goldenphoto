@@ -18,18 +18,22 @@
       <a href="/images/new"class="item">
         <i class="cloud upload icon"></i> Add New Photo
       </a>
-      <div class="ui simple dropdown item">
-        More
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <a href="/users/edit" class="item"><i class="edit icon"></i>Edit Profile</a>
-          <a class="item"><i class="globe icon"></i> Add New Photo</a>
-          <a class="item"><i class="settings icon"></i> Feature 2</a>
-        </div>
+      <% if current_user.role == "admin" %>
+        <div class="ui simple dropdown item">
+          Admin
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <a href="/users" class="item"><i class="settings icon"></i> All Users</a>
+            <a href="/users/new" class="item"><i class="settings icon"></i> Add User</a>
+            <a href="/users/edit" class="item"><i class="edit icon"></i>Edit Profile</a>
+            <a class="item"><i class="globe icon"></i> Add New Photo</a>
+          </div>
       </div>
+      <% end %>
       <div class="right item">
         <div class="ui input"><input type="text" placeholder="Search..."></div>
       </div>
+
       <% if user_signed_in? %>
         <a href="/users/edit" class="item">
           <i class="add user icon"></i><%= current_user.username %> Profile
