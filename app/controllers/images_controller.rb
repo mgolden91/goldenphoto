@@ -14,7 +14,7 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(image_params)
-
+    @image.user = current_user
     if @image.save
       redirect_to @image, notice: "Image was created successfully."
     else

@@ -7,8 +7,13 @@ Rails.application.routes.draw do
   authenticated :user do
     root 'welcome#index', as: :authenticated_root
   end
-  
-  resources :images
+
+  resources :users
+  resources :images do
+    resources :comments
+  end
+
+
 
   root to: 'landing#index'
 

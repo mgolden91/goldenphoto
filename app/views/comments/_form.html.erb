@@ -1,0 +1,5 @@
+<%= form_for [@image, @comment] do |f| %>
+    <%= f.label :body %>
+    <%= f.text_field :body %>
+    <%= f.submit "Save", class: 'btn btn-success' %>
+<% end %>
