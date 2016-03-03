@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Goldenphoto</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="ui attached inverted stackable menu">
+    <div class="ui container">
+      <a href="/" class="item">
+        <i class="home icon"></i> Home
+      </a>
+      <a class="item" href="/images">
+        <i class="grid layout icon"></i> Browse Photos
+      </a>
+      <a class="item">
+        <i class="mail icon"></i> Messages
+      </a>
+      <div class="ui simple dropdown item">
+        More
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <a href="/users/edit" class="item"><i class="edit icon"></i>Edit Profile</a>
+          <a class="item"><i class="globe icon"></i> Feature 1</a>
+          <a class="item"><i class="settings icon"></i> Feature 2</a>
+        </div>
+      </div>
+      <div class="right item">
+        <div class="ui input"><input type="text" placeholder="Search..."></div>
+      </div>
+      <% if user_signed_in? %>
+        <a href="/users/edit" class="item">
+          <i class="add user icon"></i><%= current_user.username %> Profile
+        </a>
+        <div class="item">
+          <i class="sign out icon"></i><%= link_to "Sign Out", destroy_user_session_path, method: :delete%>
+        </div>
+      <% else %>
+        <a href="/users/sign_up" class="item">
+          <i class="add user icon"></i>Sign Up
+        </a>
+        <a href="/users/sign_in" class="item">
+          <i class="sign in icon"></i>Sign In
+        </a>
+      <% end %>
+    </div>
+  </div>
+
+<%= yield %>
+
+</body>
+</html>

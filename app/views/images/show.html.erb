@@ -1,0 +1,17 @@
+<div class="ui container">
+  <div class = "ui centerd aligned">
+    <%= image_tag @image.picture%>
+    <h1><%= @image.title %></h1>
+    <h3><%= @image.body %></h3>
+  </div>
+</div>
+
+<div class="ui center aligned container">
+  <% if @image.previous_image %>
+    <h1 class="links"><%= link_to "Previous Image", @image.previous_image %></h1>
+  <% end %>
+  <% if @image.next_image %>
+    <h1 class="links"><%= link_to "Next Image", @image.next_image %></h1>
+  <% end %>
+  <h4><%= link_to "Delete Picture", image_path, method: :delete %></h4>
+</div>
