@@ -15,6 +15,7 @@ gem 'semantic-ui-sass'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'will_paginate'
+gem 'pundit'
 
 group :development do
   gem 'pg'
