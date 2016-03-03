@@ -13,7 +13,7 @@
             <%= image_tag image.picture_url(:thumb) %>
             <h1><%= link_to "#{image.title}", image_path(image) %></h2></h1>
             <h3><%=image.body %></h3>
-            <h3>Picture has <%=image.comments.count%> Comments</h3>
+            <h3>Picture has <%=pluralize(image.comments.count, "Comment", plural = nil)%> </h3>
           </div>
         <% end %>
       </div>

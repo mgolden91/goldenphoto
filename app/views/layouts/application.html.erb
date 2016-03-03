@@ -35,16 +35,13 @@
       </div>
 
       <% if user_signed_in? %>
-        <a href="/users/edit" class="item">
-          <i class="add user icon"></i><%= current_user.username %> Profile
-        </a>
+        <div class="item">
+          <i class="add user icon"></i><%= link_to "#{current_user.username}", user_path(current_user) %> Profile
+        </div>
         <div class="item">
           <i class="sign out icon"></i><%= link_to "Sign Out", destroy_user_session_path, method: :delete%>
         </div>
       <% else %>
-        <a href="/users/sign_up" class="item">
-          <i class="add user icon"></i>Sign Up
-        </a>
         <a href="/users/sign_in" class="item">
           <i class="sign in icon"></i>Sign In
         </a>

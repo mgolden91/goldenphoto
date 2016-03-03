@@ -1,26 +1,19 @@
-<div class="ui container">
-  <div class = "ui centerd aligned">
-    <%= image_tag @image.picture%>
-    <h1><%= @image.title %></h1>
-    <h3><%= @image.body %></h3>
-    <h3><%= link_to "Make Comment", new_image_comment_path(@image) %></h3>
-    <h3>Uploaded By: <%= User.find(@image.user_id).username %> on <%= @image.created_at.strftime("%m/%d/%Y") %></h3>
-  </div>
-</div>
-
-
-<div class="ui center aligned container">
+<div class="ui centered huge header">Title: <%= @image.title %></div>
+<div class = "ui center aligned container">
+  <%= image_tag @image.picture%>
+  <h3>Caption: <%= @image.body %> - <%= link_to "Make Comment", new_image_comment_path(@image) %></h3><br />
   <% if @image.previous_image %>
     <h1 class="links"><%= link_to "Previous Image", @image.previous_image %></h1>
   <% end %>
   <% if @image.next_image %>
     <h1 class="links"><%= link_to "Next Image", @image.next_image %></h1>
-  <% end %>
+  <% end %><br />
+  <h4>Uploaded By: <%= User.find(@image.user_id).username %> on <%= @image.created_at.strftime("%m/%d/%Y") %></h4>
   <h4><%= link_to "Delete Picture", image_path, method: :delete %></h4>
 </div>
-<div class="ui center aligned container">
-    <% @image.comments.all.each do |comments| %>
-      <h3><%= User.find(comments.user_id).username %> said: </h3>
-      <h4><%= comments.body %></h4>
-    <% end %>
+<div class="">
+  <h2>Comments: </h2>
+  <% @image.comments.all.each do |comments| %>
+    <h3><%= User.find(comments.user_id).username %> said: "<%= comments.body %>" on <%=comments.created_at.strftime("%m/%d/%Y")%></h3>
+  <% end %>
 </div>

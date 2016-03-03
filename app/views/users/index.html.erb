@@ -1,12 +1,15 @@
-<h1 class="ui center aligned header">Users<br />
+<h1 class="ui center aligned header">Users</h1>
 <div class="ui grid">
   <div class="five column row">
     <% @users.each do |users| %>
       <div class="column">
-        <h3><%=users.username %></h3><br />
-        <h3><%=users.email %></h3><br />
-        <h3><%=users.role %></h3><br />
-        <%= link_to "Edit User", edit_user_path(users) %>
+        <h3>User name: <%=users.username %></h3><br />
+        <h3>User email: <%=users.email %></h3><br />
+        <h3>User status: <%=users.role %></h3><br />
+        <h3>Uploaded <%= users.images.count %> images</h3>
+        <h3><%= users.comments.count %> Comments made</h3>
+        <h4><%= link_to "Edit User", edit_user_path(users) %> -
+          <%= link_to "Delete User", user_path(users), method: :delete %></h4>
       </div>
     <% end %>
   </div>

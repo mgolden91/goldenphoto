@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "#{@user.username} created successfully"
-      redirect_to :show
+      redirect_to users_path
     else
       flash[:alert] = "Error creating user. Try again."
       redirect_to users_path
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-      params.require(:user).permit(:email, :username, :password, :password_confirmation)
+      params.require(:user).permit(:email, :role, :username, :password, :password_confirmation)
   end
 
   def update_params
