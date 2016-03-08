@@ -32,7 +32,7 @@ class ImagesController < ApplicationController
     @image.assign_attributes(image_params)
 
     if @image.save
-      falsh[:notice] = "Image was updated successfully."
+      flash[:notice] = "Image was updated successfully."
     else
       flash.now[:alert] = "Error updating image. Please try again."
       render :edit
@@ -54,6 +54,6 @@ class ImagesController < ApplicationController
   private
 
   def image_params
-    params.require(:image).permit(:title, :body, :picture, :thumb)
+    params.require(:image).permit(:title, :body, :picture, :thumb, category_ids:[])
   end
 end
