@@ -1,14 +1,18 @@
 class CategoriesController < ApplicationController
   def new
     @category = Category.new
+    authorize @category
   end
 
   def index
     @category = Category.all
+    authorize @category
+
   end
 
   def create
     @category = Category.new(category_params)
+    authorize @category
 
     if @category.save
       flash[:notice] = "Category Saved"
@@ -20,6 +24,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
+    authorize @category
 
     if @category.destroy
       flash[:notice] = "Category was deleted"

@@ -2,23 +2,28 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    authorize @users
   end
 
   def new
     @user = User.new
+    authorize @user
   end
 
   def show
     @user = User.find(params[:id])
+    authorize @user
   end
 
   def edit
     @user = User.find(params[:id])
+    authorize @user
   end
 
   def update
     @user = User.find(params[:id])
     @user.assign_attributes(update_params)
+    authorize @user
 
     if @user.save!
       flash[:notice] = "User was updated."
@@ -31,6 +36,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    authorize @user
 
     if @user.save
       flash[:notice] = "#{@user.username} created successfully"
@@ -43,6 +49,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    authorize @user
 
     if @user.destroy
       flash[:notice] = "#{@user.username} deleted successfully."
