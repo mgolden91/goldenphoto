@@ -12,4 +12,8 @@ class Image < ActiveRecord::Base
   def next_image
     Image.where(["id > ?", id]).first
   end
+
+  def self.search(search)
+    where("title LIKE ? OR body LIKE ?", "%#{search}%", "%#{search}%")
+  end
 end

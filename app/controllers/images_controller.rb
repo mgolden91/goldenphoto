@@ -2,6 +2,11 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.all.paginate(:page => params[:page], :per_page => 15)
+    if params[:search]
+      @imagessearch = Image.search(params[:search]).order("created_at DESC")
+    else
+      # @imagessearch = Image.all.order("created_at DESC")
+    end
   end
 
   def show

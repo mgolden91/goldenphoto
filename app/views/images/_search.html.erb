@@ -1,0 +1,18 @@
+<% if @imagessearch.blank? %>
+  <h4>There are no images containing <%= params[:search] %>.</h4>
+<% else %>
+<div class="indexthumbnails">
+  <div class="ui grid">
+    <div class="five column row">
+      <% @imagessearch.each do |imagessearch|%>
+        <div class="column">
+          <%= image_tag imagessearch.picture_url(:thumb) %>
+          <h1><%= link_to "#{imagessearch.title}", image_path(imagessearch) %></h2></h1>
+          <h3><%= imagessearch.body %></h3>
+          <h3>Picture has <%= pluralize(imagessearch.comments.count, "Comment", plural = nil)%> </h3>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

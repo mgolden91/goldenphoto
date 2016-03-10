@@ -18,6 +18,7 @@
       <a href="/images/new"class="item">
         <i class="cloud upload icon"></i> Add New Photo
       </a>
+
       <% if current_user.role == "admin" %>
         <div class="ui simple dropdown item">
           Admin
@@ -30,8 +31,12 @@
           </div>
       </div>
       <% end %>
+
       <div class="right item">
-        <div class="ui input"><input type="text" placeholder="Search..."></div>
+        <%= form_tag(images_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Photos" %>
+        <%= submit_tag "Search", :name => nil, class: 'button' %>
+        <% end %>
       </div>
 
       <% if user_signed_in? %>

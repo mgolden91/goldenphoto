@@ -1,5 +1,8 @@
 <h1 class="ui center aligned header">Golden Photo Gallery<br />
 <button class="ui black button"><%= link_to "New Photo", new_image_path%> </button></h1>
+
+<%= render "search" %>
+
 <div class="indexthumbnails">
   <div class="ui grid">
     <% if Image.count == 0 %>
