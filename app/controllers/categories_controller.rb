@@ -7,7 +7,10 @@ class CategoriesController < ApplicationController
   def index
     @category = Category.all
     authorize @category
+  end
 
+  def show
+    @category = Category.find(params[:id])
   end
 
   def create

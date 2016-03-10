@@ -26,7 +26,7 @@
       <% Category.all.each do |categorynav| %>
       <div class="column">
         <%= image_tag @images.sample.picture%>
-        <div class="ui huge center aligned header"><%= link_to "#{categorynav.name}", images_path %></div>
+        <div class="ui huge center aligned header"><%= link_to "#{categorynav.name}", category_path(categorynav) %></div>
       </div>
       <% end %>
     </div>

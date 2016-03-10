@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   root to: 'landing#index'
 
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

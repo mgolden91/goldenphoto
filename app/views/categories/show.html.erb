@@ -1,0 +1,23 @@
+
+<h1 class="ui center aligned header"><%= @category.name %><br />
+<button class="ui black button"><%= link_to "New Photo", new_image_path%> </button></h1>
+<div class="indexthumbnails">
+  <div class="ui grid">
+    <% if Image.count == 0 %>
+      <a href="/users/sign_in" class="item">
+        <img class="ui fluid image" src="../../assets/Goldenphotohome.jpg">
+      </a>
+    <% else %>
+      <div class="five column row">
+        <% @category.images.each do |categoryimage| %>
+          <div class="column">
+            <%= image_tag categoryimage.picture_url(:thumb) %>
+            <h1><%= link_to "#{categoryimage.title}", image_path(categoryimage) %></h2></h1>
+            <h3><%= categoryimage.body %></h3>
+            <h3>Picture has <%= pluralize(categoryimage.comments.count, "Comment", plural = nil)%> </h3>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
