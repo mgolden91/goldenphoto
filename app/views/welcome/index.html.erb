@@ -7,21 +7,10 @@
     <img class="ui fluid image" src="../../assets/Goldenphotohome.jpg">
   </a>
 <% else %>
+  <div class="ui center-aligned container">
+    <%= image_tag @images.sample.picture%>
+  </div><br />
   <div class="ui grid">
-    <div class="three column row">
-      <div class="column">
-        <%= image_tag @images.sample.picture%>
-        <div class="ui huge center aligned header"><a href='/'>Category 1</a></div>
-      </div>
-      <div class="column">
-        <%= image_tag @images.sample.picture%>
-        <div class="ui huge center aligned header">Category 2</div>
-      </div>
-      <div class="column">
-        <%= image_tag @images.sample.picture%>
-        <div class="ui huge center aligned header">Category 3</div>
-      </div>
-    </div>
     <div class="five column row">
       <% Category.all.each do |categorynav| %>
       <div class="column">
